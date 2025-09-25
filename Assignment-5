@@ -1,0 +1,226 @@
+Assignment No-5
+
+
+1. Write a program to accept an integer n and display all even numbers up to n. 
+
+#include <stdio.h>  // include standard input/output functions
+
+int main() {        // main function starts, program execution begins here
+    int n, i;       // declare integer variables n (limit) and i (loop counter)
+    
+    printf("Enter an integer n: ");  // ask user for input
+    scanf("%d", &n);                 // read the value of n
+    
+    printf("Even numbers up to %d are:\n", n);  // message to user
+
+    for (i = 2; i <= n; i += 2) {    // loop starts from 2, increments by 2 each time
+        printf("%d ", i);            // print current even number
+    }
+
+    return 0;  // return 0 means successful program execution
+}
+
+
+2. Accept two integers x and y and calculate the sum of all integers between x and y (both inclusive)
+
+#include <stdio.h>  // standard I/O library
+
+int main() {
+    int x, y, sum = 0, i;   // declare variables: x, y, sum (initially 0), and loop counter i
+    
+    printf("Enter two integers (x and y): ");  // ask user for two numbers
+    scanf("%d %d", &x, &y);                    // input x and y
+    
+    for (i = x; i <= y; i++) {   // loop from x to y inclusive
+        sum += i;                // add i to sum in each iteration
+    }
+
+    printf("Sum of integers between %d and %d = %d\n", x, y, sum);  // print the result
+
+    return 0;  // program ends successfully
+}
+
+ 3. Write a program to accept two integers x and n and compute xn 
+
+#include <stdio.h>  // standard I/O library
+
+int main() {
+    int x, n, i, result = 1;   // declare variables: base x, exponent n, loop counter i, and result (initialized to 1)
+    
+    printf("Enter base (x): ");   // ask user for base
+    scanf("%d", &x);              // input x
+    printf("Enter power (n): ");  // ask user for exponent
+    scanf("%d", &n);              // input n
+
+    for (i = 1; i <= n; i++) {    // repeat multiplication n times
+        result *= x;              // result = result * x
+    }
+
+    printf("%d^%d = %d\n", x, n, result);  // print the final answer
+
+    return 0;  // exit program
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. Write a program to accept an integer and check if it is prime or not.
+
+#include <stdio.h>
+
+int main() {
+    int num, i, isPrime = 1;    // num = input, i = loop counter, isPrime = flag (assume prime)
+    
+    printf("Enter a number: ");  // ask user for input
+    scanf("%d", &num);           // read input
+    
+    if (num <= 1) {   // 0 and 1 are not prime
+        isPrime = 0;
+    } else {
+        for (i = 2; i <= num / 2; i++) {  // check divisibility from 2 to num/2
+            if (num % i == 0) {           // if num is divisible by i
+                isPrime = 0;              // then it’s not prime
+                break;                    // stop checking further
+            }
+        }
+    }
+
+    if (isPrime)                          // check flag
+        printf("%d is Prime\n", num);     // prime
+    else
+        printf("%d is NOT Prime\n", num); // not prime
+
+    return 0;  // exit
+}
+
+ 5. Write a program to accept an integer and count the number of digits in the number. 
+
+#include <stdio.h>
+
+int main() {
+    int num, count = 0;              // num = input, count = number of digits
+    
+    printf("Enter an integer: ");    // ask for input
+    scanf("%d", &num);               // read number
+
+    if (num == 0) {                  // special case for 0
+        count = 1;
+    } else {
+        while (num != 0) {           // repeat until number becomes 0
+            num /= 10;               // remove last digit
+            count++;                 // increase count
+        }
+    }
+
+    printf("Number of digits = %d\n", count);  // print result
+
+    return 0;  // exit program
+}
+
+
+
+
+
+
+
+
+
+
+
+6. Write a program to accept an integer and reverse the number. Example: Input: 546, Output 645. 
+
+#include <stdio.h>
+
+int main() {
+    int num, reversed = 0, remainder;  // num = input, reversed = reversed number, remainder = last digit
+    
+    printf("Enter an integer: ");      // ask for input
+    scanf("%d", &num);                 // read number
+
+    while (num != 0) {                 // repeat until number becomes 0
+        remainder = num % 10;          // extract last digit
+        reversed = reversed * 10 + remainder;  // append last digit to reversed number
+        num /= 10;                     // remove last digit from num
+    }
+
+    printf("Reversed number = %d\n", reversed);  // print result
+
+    return 0;  // exit
+}
+
+
+
+
+
+
+
+
+
+7. Write a program to accept a character, an integer n and display the next n characters.
+
+#include <stdio.h>
+
+int main() {
+    char ch;      // store input character
+    int n, i;     // n = number of characters, i = loop counter
+    
+    printf("Enter a character: "); 
+    scanf(" %c", &ch);     // input character (space before %c avoids newline issue)
+    
+    printf("Enter value of n: ");
+    scanf("%d", &n);       // input number of characters
+
+    printf("Next %d characters are:\n", n);
+    for (i = 1; i <= n; i++) {     // loop n times
+        printf("%c ", ch + i);     // print ASCII next characters
+    }
+
+    return 0;  // exit
+}
+
+
+
+
+
+
+
+
+
+ 8. Write a program to display the first n Fibonacci numbers. (1 1 2 3 5 ……) 
+
+#include <stdio.h>
+
+int main() {
+    int n, i;                  // n = number of terms, i = loop counter
+    long long a = 1, b = 1, next; // a and b = first two terms, next = sum
+    
+    printf("Enter number of terms (n): ");
+    scanf("%d", &n);           // input n
+
+    printf("First %d Fibonacci numbers:\n", n);
+
+    for (i = 1; i <= n; i++) {       // loop through n terms
+        if (i == 1 || i == 2) {      // first two terms are always 1
+            printf("1 ");
+        } else {
+            next = a + b;            // next term = sum of last two
+            printf("%lld ", next);   // print next term
+            a = b;                   // shift values
+            b = next;
+        }
+    }
+
+    return 0;  // exit
+}
+
+
